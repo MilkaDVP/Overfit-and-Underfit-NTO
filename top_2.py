@@ -107,10 +107,6 @@ def build_als_candidates(interactions: pd.DataFrame) -> pd.DataFrame:
         return pd.DataFrame()
 
     bag = pd.concat(collector, ignore_index=True)
-    print(f"\n>>> ALS rows collected: {len(bag)}")
-    print("\n>>> Peek rows:")
-    print(bag.head(20))
-
     bag.to_csv("als_candidates.csv", index=False)
     bag = bag.drop(columns=["als_score", "candidate_rank"])
     return bag
